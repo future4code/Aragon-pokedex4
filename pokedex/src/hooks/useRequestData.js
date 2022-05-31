@@ -27,4 +27,4 @@ const useRequestData = (path, initialState) => {
     return [data, getData]
 }
 
-export default useRequestData
+export default useRequestData 
