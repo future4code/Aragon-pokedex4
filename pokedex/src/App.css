@@ -1,3 +1,25 @@
+body{
+  background-image: url(https://cdnb.artstation.com/p/assets/images/images/039/196/975/large/labuu-20210630xx.jpg?1625206703) ;
+  background-size: cover;
+  color: rgb(31, 31, 138);
+  background-attachment: fixed;
+  text-align: center;
+}
+
+.pokemon{
+  margin: auto;
+  height: 50vh;
+  width: 54vw;
+  background-image: url(pokemon-logo-png-1432.png);
+}
+
+.pokeDetails{
+  margin: auto;
+  height: 51vh;
+  width: 75vw;
+  background-image: url(pokemon-logo-png-1428.png);
+}
+
 .App {
   text-align: center;
 }

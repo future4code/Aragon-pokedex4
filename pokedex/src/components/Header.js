@@ -1,6 +1,21 @@
 import { useNavigate } from "react-router-dom"
 import { goToPokedexPage, goToPokeListPage, goToPreviousPage } from "../routes/coordinator"
+import styled from "styled-components"
 
+const Button = styled.button `
+    width: 10vw;
+    background-color: #F2CB07;
+    border-radius: 6px;
+    padding: 6px;
+
+    &:hover{
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            border-bottom: 1px solid ;
+            background-color: yellow;
+            color: rgb(31, 31, 138);
+        }
+`
 
 
 export default function Header(props) {
@@ -12,7 +27,7 @@ export default function Header(props) {
             case "pokelistpage":
                 return (
                     <section>
-                        <h1>Pokemons</h1>
+                        <h1 className="pokemon"></h1>
                         <nav>
                             <button onClick={() => goToPokedexPage(navigate)} >Ir para pokedex</button>
                         </nav>
@@ -30,9 +45,9 @@ export default function Header(props) {
             case "pokedetailspage":
                 return (
                     <section>
-                        <h1>PokeDetailPage</h1>
+                        <h1 className="pokeDetails"></h1>
                         <nav>
-                            <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>
+                            <Button onClick={() => goToPreviousPage(navigate)}>Voltar</Button>
                         </nav>
                     </section>
                 )
