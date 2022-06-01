@@ -4,7 +4,7 @@ import GlobalStateContext from "../global/GlobalStateContext"
 import { useContext, useEffect } from "react"
 
 
-export default function PokeListPage() {
+ function PokeListPage() {
 
     const {states, getters} = useContext(GlobalStateContext)
 
@@ -13,7 +13,7 @@ export default function PokeListPage() {
     const { getPokeList, getAllPokeDetails } = getters
 
     useEffect(() =>{
-        if(!pokeList.lenght){
+        if(!pokeList.length){
             getPokeList()
         } else{
             getAllPokeDetails()
@@ -29,6 +29,7 @@ export default function PokeListPage() {
                 < PokeCard
                     key={pokemon.id}
                     pokemon={pokemon}
+                    actualPage={"pokelistpage"}
                 />
             )
         }) : <p>Carregando...</p>
@@ -37,8 +38,10 @@ export default function PokeListPage() {
             <Header
                 actualPage={"pokelistpage"}
             />
-            <h1>pokeList Page</h1>
+            <br/>
             {showPokeList}
         </main>
     )
 }
+
+export default PokeListPage

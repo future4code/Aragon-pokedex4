@@ -35,8 +35,8 @@ export default function Header(props) {
                 )
             case "pokedexpage":
                 return (
-                    <section>
-                        <h1>Pokedex</h1>
+                    <section >
+                        <h1 className="imagemPokedex"></h1>
                         <nav>
                             <button onClick={() => goToPokeListPage(navigate)}>Ir para Pokelist page</button>
                         </nav>
@@ -47,7 +47,7 @@ export default function Header(props) {
                     <section>
                         <h1 className="pokeDetails"></h1>
                         <nav>
-                            <Button onClick={() => goToPreviousPage(navigate)}>Voltar</Button>
+                            <Button className="ButtonVoltar" onClick={() => goToPreviousPage(navigate)}>Voltar</Button>
                         </nav>
                     </section>
                 )
