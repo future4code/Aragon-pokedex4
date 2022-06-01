@@ -17,9 +17,11 @@ export default function PokeCard(props) {
     });
     setPokedex(orderedPokedex);
   };
-
+  console.log(props)
   return (
+    
     <section>
+      <div className="DivCard">
       <span>{name.toUpperCase()}</span>
 
       <span>n°: {id}</span>
@@ -33,10 +35,13 @@ export default function PokeCard(props) {
       : <button>Remover da Pokédex</button>      
       }
       <br />
-      <button>Adicionar Pokedex</button>
       <button onClick={() => goToPokeDetailsPage(navigate, name)}>
         Ver detalhes
       </button>
+      </div>
+      <br/>
     </section>
+    
+    
   );
 }

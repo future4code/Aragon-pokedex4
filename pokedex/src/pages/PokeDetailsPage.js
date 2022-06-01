@@ -52,7 +52,7 @@ export default function PokeDetailsPage() {
                 <h2>
                     {pokemon.name.toUpperCase()}
                 </h2>
-                <img src={pokemon.images.front} alt={`${pokemon.name} de frente`} />
+                <img className="img" src={pokemon.images.front} alt={`${pokemon.name} de frente`} />
                 {/* <img src={pokemon.images.back} alt={`${pokemon.name} de costas`} /> */}
             </Figure>
             <section>
@@ -95,11 +95,13 @@ export default function PokeDetailsPage() {
 
     return (
         <main>
+            <div>
             <Header
                 actualPage={"pokedetailspage"}
             />
             <h1>poke infos</h1>
             {pokeDetail}
+            </div>
         </main>
 
     )
