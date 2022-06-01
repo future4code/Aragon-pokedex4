@@ -1,11 +1,12 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Larissa
+- Cristiano
+- Willian
 
-Link do Surge: www.link.com.br
+Link do Surge: measly-building.surge.sh
+
 
 O que funciona:
 - Item 1
