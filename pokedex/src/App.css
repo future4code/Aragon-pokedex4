@@ -18,15 +18,12 @@ body{
 .imagemPokedex{
   margin: auto;
   height: 50vh;
-  width: 54vw;
+  width: 45vw;
   background-image: url(pokedex.2800773d.png);
   background-size: contain ;
   background-repeat: no-repeat;
 }
 
-.ButtonVoltar{
-  color: rgb(31, 31, 138);
-}
 
 .DivCard {
   background-color: #F2CB07;
@@ -38,9 +35,38 @@ body{
   box-shadow: gray;
 }
 
+.detalhes{
+  display: inline-flex;
+  column-gap: 25px;
+  margin: 25px;
+}
+
+.Title{
+  width: 12vw;
+    background-color: #F2CB07;
+    border-radius: 6px;
+    padding: 6px;
+    color: rgb(31, 31, 138) ;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.pagina{
+  width: 12vw;
+  background-color: #eb1b1b;
+  border-radius: 6px;
+  padding: 6px;
+  color: rgb(31, 31, 138) ;
+  margin:auto;
+  margin-top: 50px;
+  margin-bottom: 50px;;
+}
+
 
 button {
-    width: 10vw;
+    width: 6vw;
     background-color: rgb(31, 31, 138);
     border-radius: 6px;
     padding: 6px;
@@ -51,7 +77,7 @@ button {
             cursor: pointer;
             transition: .3s ease-in-out;
             border-bottom: 1px solid ;
-            background-color: yellow;
+            background-color: #eb1b1b;
             color: rgb(31, 31, 138);
         
       }
@@ -59,7 +85,7 @@ button {
 .pokeDetails{
   margin: auto;
   height: 51vh;
-  width: 75vw;
+  width: 45vw;
   background-image: url(pokemon-logo-png-1428.png);
   background-size: contain ;
   background-repeat: no-repeat;

@@ -76,18 +76,18 @@ function PokeListPage() {
             />
             <br />
             <select onChange={(e) => setOrder(e.target.value)} >
-                <option value={""} >Sem ordenação</option>
-                <option value={"asc"} >Crescente</option>
-                <option value={"desc"} >Decrescente</option>
+                <option value={""} >Ordem Numérica</option>
+                <option value={"asc"} >A-Z</option>
+                <option value={"desc"} >Z-A</option>
             </select>
             <nav>
-                <h2>Selecione uma pagina</h2>
+                <h2 className="Title">Pesquise Pokémons!</h2>
                 {page !== 1 &&
-                    <button onClick={() => changePage(-1)}>Voltar Página</button>
+                    <button onClick={() => changePage(-1)}>Voltar</button>
                 }
-                <span>Página {page}</span>
+                <span className="pagina">Página {page}</span>
                 {pokeList.length &&
-                    <button onClick={() => changePage(1)} >Proxima página</button>
+                    <button onClick={() => changePage(1)} >Próxima</button>
                 }
             </nav>
             {sortedShowPokeList()}

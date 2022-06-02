@@ -1,21 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import { goToPokedexPage, goToPokeListPage, goToPreviousPage } from "../routes/coordinator"
-import styled from "styled-components"
-
-const Button = styled.button `
-    width: 10vw;
-    background-color: #F2CB07;
-    border-radius: 6px;
-    padding: 6px;
-
-    &:hover{
-            cursor: pointer;
-            transition: .3s ease-in-out;
-            border-bottom: 1px solid ;
-            background-color: yellow;
-            color: rgb(31, 31, 138);
-        }
-`
 
 
 export default function Header(props) {
@@ -29,7 +13,7 @@ export default function Header(props) {
                     <section>
                         <h1 className="pokemon"></h1>
                         <nav>
-                            <button onClick={() => goToPokedexPage(navigate)} >Ir para pokedex</button>
+                            <button onClick={() => goToPokedexPage(navigate)} >Ir para Pokédex</button>
                         </nav>
                     </section>
                 )
@@ -38,7 +22,7 @@ export default function Header(props) {
                     <section >
                         <h1 className="imagemPokedex"></h1>
                         <nav>
-                            <button onClick={() => goToPokeListPage(navigate)}>Ir para Pokelist page</button>
+                            <button onClick={() => goToPokeListPage(navigate)}>Voltar</button>
                         </nav>
                     </section>
                 )
@@ -47,7 +31,7 @@ export default function Header(props) {
                     <section>
                         <h1 className="pokeDetails"></h1>
                         <nav>
-                            <Button className="ButtonVoltar" onClick={() => goToPreviousPage(navigate)}>Voltar</Button>
+                            <button className="ButtonVoltar" onClick={() => goToPreviousPage(navigate)}>Voltar para Pokédex</button>
                         </nav>
                     </section>
                 )

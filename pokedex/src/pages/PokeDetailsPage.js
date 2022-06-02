@@ -99,7 +99,7 @@ export default function PokeDetailsPage() {
             <Header
                 actualPage={"pokedetailspage"}
             />
-            <h1>poke infos</h1>
+            <h1 className="Title">Pokémon Selecionado</h1>
             {pokeDetail}
             </div>
         </main>

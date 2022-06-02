@@ -27,7 +27,7 @@ export default function PokeCard(props) {
   // console.log(props)
   return (
     
-    <section>
+    <section className="detalhes">
       <div className="DivCard">
       <span>{name.toUpperCase()} #: {id}</span>
 
