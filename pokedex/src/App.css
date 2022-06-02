@@ -11,7 +11,8 @@ body{
   height: 50vh;
   width: 54vw;
   background-image: url(pokemon-logo-png-1432.png);
-  background-size: cover;
+  background-size: contain ;
+  background-repeat: no-repeat;
 }
 
 .imagemPokedex{
@@ -60,7 +61,8 @@ button {
   height: 51vh;
   width: 75vw;
   background-image: url(pokemon-logo-png-1428.png);
-  background-size: cover;
+  background-size: contain ;
+  background-repeat: no-repeat;
 }
 
 .App {

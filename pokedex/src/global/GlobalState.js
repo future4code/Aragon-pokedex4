@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import { limit } from "../constants/pagination"
 import { BASE_URL } from "../constants/url"
 import GlobalStateContext from "./GlobalStateContext"
 
@@ -13,30 +14,45 @@ const GlobalState = (props) =>{
 
     const [pokedex, setPokedex] = useState([])
 
-    const getPokeList = () => {
-        axios.get(`${BASE_URL}/list?limit=20&offset=0`)
+    const [page,setPage] = useState(1)
+
+    const [isLoading,setIsLoading] = useState(false)
+
+    const getPokeList = (actualPage) => {
+        setIsLoading(true)
+        axios.get(`${BASE_URL}/list?limit=${limit}&offset=${limit*(actualPage - 1)}`)
         .then((response) => {
             setPokeList(response.data)
+            setIsLoading(false)
         })
         .catch((error)=>{
             console.log(error.message)
+            setIsLoading(false)
         })
     }
 
     const getPokeDetails = (pokename) =>{
+        setIsLoading(true)
         axios
         .get(`${BASE_URL}/${pokename}`)
         .then((res) =>{
             setPokemon(res.data)
+            setIsLoading(false)
         })
         .catch((err) =>{
             alert(err.message)
+            setIsLoading(false)
         })
     }
 
     const getAllPokeDetails = () =>{
+
         const newList = []
+
         pokeList.forEach((pokemon)=>{
+
+            setIsLoading(true)
+
             axios.get(`${BASE_URL}/${pokemon.name}`)
             .then((response)=>{
                 newList.push(response.data)
@@ -45,17 +61,19 @@ const GlobalState = (props) =>{
                         return a.id - b.id;
                     })
                     setPokemons(orderedList)
+                    setIsLoading(false)
                 }
             }) 
             .catch((error)=>{
                 console.log(error.message)
+                setIsLoading(false)
             })
         })
     }
 
 
-    const states = {pokeList, pokemon, pokemons, pokedex}
-    const setters = {setPokeList, setPokemon, setPokemons, setPokedex}
+    const states = {pokeList, pokemon, pokemons, pokedex,page,isLoading}
+    const setters = {setPokeList, setPokemon, setPokemons, setPokedex, setIsLoading, setPage}
     const getters = {getPokeList, getPokeDetails, getAllPokeDetails}
 
     return(

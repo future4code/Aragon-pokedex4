@@ -10,6 +10,13 @@ export default function PokeCard(props) {
   const { setPokedex } = setters;
   const { id, name, images } = props.pokemon;
 
+  const removeFromPokedex = () => {
+    const newPokedex = pokedex.filter((poke)=> {
+        return id !== poke.id
+    })
+    setPokedex(newPokedex)
+  }
+
   const addToPokedex = () => {
     const newPokedex = [...pokedex, props.pokemon];
     const orderedPokedex = newPokedex.sort((a, b) => {
@@ -22,9 +29,9 @@ export default function PokeCard(props) {
     
     <section>
       <div className="DivCard">
-      <span>{name.toUpperCase()}</span>
+      <span>{name.toUpperCase()} #: {id}</span>
 
-      <span>n°: {id}</span>
+      <span></span>
 
       <figure>
           <img src={images.front} alt={`Foto frontal de ${name}`}></img>
@@ -32,7 +39,7 @@ export default function PokeCard(props) {
 
       {props.actualPage === "pokelistpage" ?
       <button onClick={addToPokedex}>Adicionar à Pokédex</button>
-      : <button>Remover da Pokédex</button>      
+      : <button onClick={removeFromPokedex} >Remover da Pokédex</button>      
       }
       <br />
       <button onClick={() => goToPokeDetailsPage(navigate, name)}>
