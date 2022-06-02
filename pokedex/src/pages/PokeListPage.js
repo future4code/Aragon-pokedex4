@@ -1,8 +1,8 @@
 import Header from "../components/Header"
 import PokeCard from "../components/PokeCard"
 import GlobalStateContext from "../global/GlobalStateContext"
-import { useContext, useEffect } from "react"
-
+import { useContext, useEffect, useState } from "react"
+import loadingGif from "../loading.gif"
 
 function PokeListPage() {
 
@@ -12,6 +12,9 @@ function PokeListPage() {
 
     const { getPokeList, getAllPokeDetails } = getters
     const { setPage } = setters
+
+    const [order, setOrder] = useState("")
+
     useEffect(() => {
         if (!pokeList.length) {
             getPokeList()
@@ -27,30 +30,56 @@ function PokeListPage() {
         getPokeList(nextPage)
     }
 
-    const showPokeList = pokemons[0] && !isLoading ?
-        pokemons.filter((pokemon) => {
-            for (let poke of pokedex) {
-                if (poke.id === pokemon.id) {
-                    return false
+
+    const sortedShowPokeList = () => {
+        
+        let showPokeList = [...pokemons]
+        if (order) {
+            console.log(showPokeList)
+            showPokeList.sort((a, b) => {
+                if (order === "asc") {
+                    return a.name.localeCompare(b.name)
+                } else {
+                    return b.name.localeCompare(a.name)
                 }
-            }
-            return true
-        })
-            .map((pokemon) => {
-                return (
-                    < PokeCard
-                        key={pokemon.id}
-                        pokemon={pokemon}
-                        actualPage={"pokelistpage"}
-                    />
-                )
-            }) : <p>Carregando...</p>
+            })
+        }
+
+        showPokeList = pokemons[0] && !isLoading ?
+            showPokeList.filter((pokemon) => {
+                for (let poke of pokedex) {
+                    if (poke.id === pokemon.id) {
+                        return false
+                    }
+                }
+                return true
+            })
+
+                .map((pokemon) => {
+                    return (
+                        < PokeCard
+                            key={pokemon.id}
+                            pokemon={pokemon}
+                            actualPage={"pokelistpage"}
+                        />
+                    )
+                }) : <img src={loadingGif} alt={"pikachu batendo bola"} />
+
+
+        return showPokeList
+    }
+
     return (
         <main>
             <Header
                 actualPage={"pokelistpage"}
             />
             <br />
+            <select onChange={(e) => setOrder(e.target.value)} >
+                <option value={""} >Sem ordenação</option>
+                <option value={"asc"} >Crescente</option>
+                <option value={"desc"} >Decrescente</option>
+            </select>
             <nav>
                 <h2>Selecione uma pagina</h2>
                 {page !== 1 &&
@@ -61,7 +90,7 @@ function PokeListPage() {
                     <button onClick={() => changePage(1)} >Proxima página</button>
                 }
             </nav>
-            {showPokeList}
+            {sortedShowPokeList()}
         </main>
     )
 }

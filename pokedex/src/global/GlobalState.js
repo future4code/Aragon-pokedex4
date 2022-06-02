@@ -17,6 +17,8 @@ const GlobalState = (props) =>{
     const [page,setPage] = useState(1)
 
     const [isLoading,setIsLoading] = useState(false)
+    
+    const [sortBy, setSortBy] = useState([])
 
     const getPokeList = (actualPage) => {
         setIsLoading(true)
@@ -45,6 +47,7 @@ const GlobalState = (props) =>{
         })
     }
 
+    
     const getAllPokeDetails = () =>{
 
         const newList = []
@@ -72,11 +75,12 @@ const GlobalState = (props) =>{
     }
 
 
-    const states = {pokeList, pokemon, pokemons, pokedex,page,isLoading}
-    const setters = {setPokeList, setPokemon, setPokemons, setPokedex, setIsLoading, setPage}
+    const states = {pokeList, pokemon, pokemons, pokedex,page,isLoading,sortBy}
+    const setters = {setPokeList, setPokemon, setPokemons, setPokedex, setIsLoading, setPage,setSortBy}
     const getters = {getPokeList, getPokeDetails, getAllPokeDetails}
 
     return(
+        
         <GlobalStateContext.Provider value={{states, setters, getters}}>
             {props.children}
         </GlobalStateContext.Provider>

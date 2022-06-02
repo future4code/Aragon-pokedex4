@@ -24,14 +24,12 @@ export default function PokeCard(props) {
     });
     setPokedex(orderedPokedex);
   };
-  console.log(props)
+  // console.log(props)
   return (
     
     <section>
       <div className="DivCard">
       <span>{name.toUpperCase()} #: {id}</span>
-
-      <span></span>
 
       <figure>
           <img src={images.front} alt={`Foto frontal de ${name}`}></img>
