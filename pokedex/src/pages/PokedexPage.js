@@ -22,7 +22,7 @@ export default function PokedexPage() {
             <Header
                 actualPage={"pokedexpage"}
             />
-            
+           
             {showPokedex}
         </main>
 
