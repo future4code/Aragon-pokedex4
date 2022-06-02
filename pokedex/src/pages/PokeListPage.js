@@ -4,41 +4,63 @@ import GlobalStateContext from "../global/GlobalStateContext"
 import { useContext, useEffect } from "react"
 
 
- function PokeListPage() {
+function PokeListPage() {
 
-    const {states, getters} = useContext(GlobalStateContext)
+    const { states, getters, setters } = useContext(GlobalStateContext)
 
-    const {pokeList, pokemons} = states
+    const { pokeList, pokemons, pokedex, page, isLoading } = states
 
     const { getPokeList, getAllPokeDetails } = getters
-
-    useEffect(() =>{
-        if(!pokeList.length){
+    const { setPage } = setters
+    useEffect(() => {
+        if (!pokeList.length) {
             getPokeList()
-        } else{
+        } else {
             getAllPokeDetails()
         }
-        
-    },[pokeList]);
- 
-    
 
-    const showPokeList = pokemons[0] ?
-        pokemons.map((pokemon) => {
-            return (
-                < PokeCard
-                    key={pokemon.id}
-                    pokemon={pokemon}
-                    actualPage={"pokelistpage"}
-                />
-            )
-        }) : <p>Carregando...</p>
+    }, [pokeList]);
+
+    const changePage = (sum) => {
+        const nextPage = page + sum
+        setPage(nextPage)
+        getPokeList(nextPage)
+    }
+
+    const showPokeList = pokemons[0] && !isLoading ?
+        pokemons.filter((pokemon) => {
+            for (let poke of pokedex) {
+                if (poke.id === pokemon.id) {
+                    return false
+                }
+            }
+            return true
+        })
+            .map((pokemon) => {
+                return (
+                    < PokeCard
+                        key={pokemon.id}
+                        pokemon={pokemon}
+                        actualPage={"pokelistpage"}
+                    />
+                )
+            }) : <p>Carregando...</p>
     return (
         <main>
             <Header
                 actualPage={"pokelistpage"}
             />
-            <br/>
+            <br />
+            <nav>
+                <h2>Selecione uma pagina</h2>
+                {page !== 1 &&
+                    <button onClick={() => changePage(-1)}>Voltar Página</button>
+                }
+                <span>Página {page}</span>
+                {pokeList.length &&
+                    <button onClick={() => changePage(1)} >Proxima página</button>
+                }
+            </nav>
             {showPokeList}
         </main>
     )
