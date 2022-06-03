@@ -33,6 +33,7 @@ body{
   margin:auto;
   border-radius: 6px;
   box-shadow: gray;
+  opacity: 0.8;
 }
 
 .detalhes{
@@ -40,6 +41,10 @@ body{
   column-gap: 25px;
   margin: 25px;
 }
+
+/* detalhes:hover {
+  transform: scale(1.2);
+} */
 
 .Title{
   width: 12vw;
@@ -50,6 +55,7 @@ body{
     margin:auto;
     margin-top: 50px;
     margin-bottom: 50px;
+    opacity: 0.8;
 
 }
 
@@ -79,6 +85,7 @@ button {
             border-bottom: 1px solid ;
             background-color: #eb1b1b;
             color: rgb(31, 31, 138);
+            transform: scale(1.2);
         
       }
 
