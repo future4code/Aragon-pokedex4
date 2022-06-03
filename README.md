@@ -13,7 +13,7 @@ Links do Surge:
 
 [fabulous-discussion.surge.sh](http://fabulous-discussion.surge.sh) - dia 02/06/2022
 
-[precious-order.surge.sh] (http://precious-order.surge.sh) - dia- 03/06/2022
+(http://precious-order.surge.sh) - dia- 03/06/2022
 
 
 
